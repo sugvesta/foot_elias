@@ -2,97 +2,107 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>PIXEL FOOT '96</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div id="app">
-    <!-- ÉCRAN TITRE -->
+
+    <!-- ═══ ÉCRAN TITRE ═══ -->
     <div id="screen-title" class="screen active">
       <div class="title-container">
         <div class="pixel-title">
           <span class="title-line1">⚽ PIXEL</span>
           <span class="title-line2">FOOT '96</span>
         </div>
-        <div class="blink-text">APPUIE SUR ENTRÉE POUR JOUER</div>
-
-        <div class="controls-panel">
-          <div class="ctrl-col">
-            <div class="ctrl-player p1-label">▲ JOUEUR 1 (bleu)</div>
-            <div class="ctrl-row"><kbd>Z</kbd><kbd>Q</kbd><kbd>S</kbd><kbd>D</kbd> <span>Déplacer</span></div>
-            <div class="ctrl-row"><kbd>ESPACE</kbd> <span>Tirer / Shooter</span></div>
-            <div class="ctrl-row"><kbd>E</kbd> <span>Passer le ballon</span></div>
+        <div class="mode-select">
+          <div id="mode-1p" class="mode-btn active-mode" data-mode="1p">
+            <span class="mode-icon">🧑‍💻</span>
+            <span class="mode-name">1 JOUEUR</span>
+            <span class="mode-sub">vs ORDINATEUR</span>
           </div>
-          <div class="ctrl-divider"></div>
-          <div class="ctrl-col">
-            <div class="ctrl-player p2-label">▲ JOUEUR 2 (rouge)</div>
-            <div class="ctrl-row"><kbd>↑</kbd><kbd>←</kbd><kbd>↓</kbd><kbd>→</kbd> <span>Déplacer</span></div>
-            <div class="ctrl-row"><kbd>ENTRÉE</kbd> <span>Tirer / Shooter</span></div>
-            <div class="ctrl-row"><kbd>SHIFT</kbd> <span>Passer le ballon</span></div>
+          <div id="mode-2p" class="mode-btn" data-mode="2p">
+            <span class="mode-icon">👥</span>
+            <span class="mode-name">2 JOUEURS</span>
+            <span class="mode-sub">LOCAL / TACTILE</span>
           </div>
         </div>
-
-        <div class="tips-bar">💡 Approche-toi du ballon avant de tirer  •  L'IA te fera des passes automatiquement</div>
+        <div class="blink-text" id="title-start-hint">APPUIE / TOUCHE ENTRÉE POUR JOUER</div>
         <div class="copyright">© 1996 RETRO GAMES  •  ALL RIGHTS RESERVED</div>
       </div>
     </div>
 
-    <!-- ÉCRAN SÉLECTION ÉQUIPE -->
+    <!-- ═══ ÉCRAN SÉLECTION ÉQUIPE ═══ -->
     <div id="screen-select" class="screen">
-      <h2 class="select-title">CHOISIR TON ÉQUIPE</h2>
+      <h2 class="select-title" id="select-title-text">CHOISIR TON ÉQUIPE</h2>
       <div id="team-grid"></div>
       <div class="vs-display">
-        <div id="team1-badge" class="badge-slot">?</div>
+        <div class="vs-side">
+          <div id="team1-badge" class="badge-slot">?</div>
+          <div id="team1-select-name" class="badge-name p1-label">P1</div>
+        </div>
         <span class="vs-text">VS</span>
-        <div id="team2-badge" class="badge-slot">?</div>
+        <div class="vs-side">
+          <div id="team2-badge" class="badge-slot">?</div>
+          <div id="team2-select-name" class="badge-name p2-label">IA</div>
+        </div>
       </div>
-      <div id="select-hint" class="hint-text">↑↓←→ NAVIGUER  •  ENTRÉE SÉLECTIONNER</div>
+      <div id="select-hint" class="hint-text">↑↓←→ NAVIGUER  •  ENTRÉE / TAP CONFIRMER</div>
     </div>
 
-    <!-- ÉCRAN TERRAIN -->
+    <!-- ═══ ÉCRAN JEU ═══ -->
     <div id="screen-game" class="screen">
       <div id="hud">
         <div id="score-display">
-          <span id="team1-name-hud">---</span>
+          <span id="team1-name-hud" class="p1-label">---</span>
           <span id="score">0 - 0</span>
-          <span id="team2-name-hud">---</span>
+          <span id="team2-name-hud" class="p2-label">---</span>
         </div>
-        <div id="timer-display">90:00</div>
+        <div id="timer-display">00:00</div>
+        <div id="mode-badge">1P</div>
       </div>
-      <canvas id="gameCanvas" width="640" height="384"></canvas>
-      <div id="controls-hint">
-        <div class="ctrl-block p1-block">
-          <span class="ctrl-block-title">P1</span>
-          <span><kbd class="kbd-sm">ZQSD</kbd> Mvt</span>
-          <span><kbd class="kbd-sm">ESPACE</kbd> Tir</span>
-          <span><kbd class="kbd-sm">E</kbd> Passe</span>
+      <div id="game-area">
+        <canvas id="gameCanvas"></canvas>
+        <!-- Joystick P1 -->
+        <div id="joystick1-zone" class="joystick-zone touch-left-zone">
+          <div id="joystick1-bg"   class="joystick-bg"></div>
+          <div id="joystick1-knob" class="joystick-knob"></div>
         </div>
-        <div class="ctrl-sep">|</div>
-        <div class="ctrl-block p2-block">
-          <span class="ctrl-block-title">P2</span>
-          <span><kbd class="kbd-sm">↑↓←→</kbd> Mvt</span>
-          <span><kbd class="kbd-sm">ENTRÉE</kbd> Tir</span>
-          <span><kbd class="kbd-sm">SHIFT</kbd> Passe</span>
+        <!-- Joystick P2 (2J) -->
+        <div id="joystick2-zone" class="joystick-zone touch-right-zone hidden-p2">
+          <div id="joystick2-bg"   class="joystick-bg"></div>
+          <div id="joystick2-knob" class="joystick-knob"></div>
         </div>
-        <div class="ctrl-sep">|</div>
-        <div class="ctrl-tip">⚽ Approche-toi du ballon pour tirer !</div>
+        <!-- Boutons P1 -->
+        <div id="btns-p1" class="action-btns btns-p1-pos">
+          <button id="btn-p1-pass"   class="action-btn btn-pass">PASSE</button>
+          <button id="btn-p1-shoot"  class="action-btn btn-shoot">TIR ⚽</button>
+          <button id="btn-p1-sprint" class="action-btn btn-sprint">⚡</button>
+        </div>
+        <!-- Boutons P2 (2J) -->
+        <div id="btns-p2" class="action-btns btns-p2-pos hidden-p2">
+          <button id="btn-p2-pass"   class="action-btn btn-pass">PASSE</button>
+          <button id="btn-p2-shoot"  class="action-btn btn-shoot">TIR ⚽</button>
+          <button id="btn-p2-sprint" class="action-btn btn-sprint">⚡</button>
+        </div>
       </div>
     </div>
 
-    <!-- ÉCRAN FIN DE MATCH -->
+    <!-- ═══ ÉCRAN FIN MATCH ═══ -->
     <div id="screen-end" class="screen">
       <div class="end-container">
         <div class="end-title">FINAL SCORE</div>
-        <div id="end-score" class="end-score-display"></div>
+        <div id="end-score"  class="end-score-display"></div>
         <div id="end-winner" class="end-winner"></div>
         <div class="end-options">
           <div id="btn-rematch" class="menu-btn active-btn">⟳ REJOUER</div>
-          <div id="btn-menu" class="menu-btn">⌂ MENU</div>
+          <div id="btn-menu"    class="menu-btn">⌂ MENU</div>
         </div>
       </div>
     </div>
-  </div>
 
+  </div>
   <script src="game.js"></script>
 </body>
 </html>
