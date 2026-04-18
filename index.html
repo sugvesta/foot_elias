@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>PIXEL FOOT '96</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <!-- ÉCRAN TITRE -->
+    <div id="screen-title" class="screen active">
+      <div class="title-container">
+        <div class="pixel-title">
+          <span class="title-line1">⚽ PIXEL</span>
+          <span class="title-line2">FOOT '96</span>
+        </div>
+        <div class="blink-text">APPUIE SUR ENTRÉE</div>
+        <div class="copyright">© 1996 RETRO GAMES  •  ALL RIGHTS RESERVED</div>
+      </div>
+    </div>
+
+    <!-- ÉCRAN SÉLECTION ÉQUIPE -->
+    <div id="screen-select" class="screen">
+      <h2 class="select-title">CHOISIR TON ÉQUIPE</h2>
+      <div id="team-grid"></div>
+      <div class="vs-display">
+        <div id="team1-badge" class="badge-slot">?</div>
+        <span class="vs-text">VS</span>
+        <div id="team2-badge" class="badge-slot">?</div>
+      </div>
+      <div id="select-hint" class="hint-text">↑↓←→ NAVIGUER  •  ENTRÉE SÉLECTIONNER</div>
+    </div>
+
+    <!-- ÉCRAN TERRAIN -->
+    <div id="screen-game" class="screen">
+      <div id="hud">
+        <div id="score-display">
+          <span id="team1-name-hud">---</span>
+          <span id="score">0 - 0</span>
+          <span id="team2-name-hud">---</span>
+        </div>
+        <div id="timer-display">90:00</div>
+      </div>
+      <canvas id="gameCanvas" width="640" height="400"></canvas>
+      <div id="controls-hint">
+        <span>JOUEUR 1: ZQSD + ESPACE (tir) + E (passe)</span>
+        <span>JOUEUR 2: ←↑↓→ + ENTRÉE (tir) + SHIFT (passe)</span>
+      </div>
+    </div>
+
+    <!-- ÉCRAN FIN DE MATCH -->
+    <div id="screen-end" class="screen">
+      <div class="end-container">
+        <div class="end-title">FINAL SCORE</div>
+        <div id="end-score" class="end-score-display"></div>
+        <div id="end-winner" class="end-winner"></div>
+        <div class="end-options">
+          <div id="btn-rematch" class="menu-btn active-btn">⟳ REJOUER</div>
+          <div id="btn-menu" class="menu-btn">⌂ MENU</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
