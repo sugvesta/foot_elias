@@ -4,105 +4,122 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>PIXEL FOOT '96</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="app">
+<div id="app">
 
-    <!-- ═══ ÉCRAN TITRE ═══ -->
-    <div id="screen-title" class="screen active">
-      <div class="title-container">
-        <div class="pixel-title">
-          <span class="title-line1">⚽ PIXEL</span>
-          <span class="title-line2">FOOT '96</span>
-        </div>
-        <div class="mode-select">
-          <div id="mode-1p" class="mode-btn active-mode" data-mode="1p">
-            <span class="mode-icon">🧑‍💻</span>
-            <span class="mode-name">1 JOUEUR</span>
-            <span class="mode-sub">vs ORDINATEUR</span>
-          </div>
-          <div id="mode-2p" class="mode-btn" data-mode="2p">
-            <span class="mode-icon">👥</span>
-            <span class="mode-name">2 JOUEURS</span>
-            <span class="mode-sub">LOCAL / TACTILE</span>
-          </div>
-        </div>
-        <div class="blink-text" id="title-start-hint">APPUIE / TOUCHE ENTRÉE POUR JOUER</div>
-        <div class="copyright">© 1996 RETRO GAMES  •  ALL RIGHTS RESERVED</div>
+  <!-- ══ TITRE ══ -->
+  <div id="screen-title" class="screen active">
+    <div class="title-container">
+      <div class="pixel-title">
+        <div class="title-line1">PIXEL</div>
+        <div class="title-line2">FOOT '96</div>
       </div>
+      <div class="mode-select">
+        <div id="mode-1p" class="mode-btn active-mode">
+          <span class="mode-icon">🕹️</span>
+          <span class="mode-name">1 JOUEUR</span>
+          <span class="mode-sub">vs IA</span>
+        </div>
+        <div id="mode-2p" class="mode-btn">
+          <span class="mode-icon">👥</span>
+          <span class="mode-name">2 JOUEURS</span>
+          <span class="mode-sub">local</span>
+        </div>
+      </div>
+      <div class="controls-hint">
+        <div class="hint-row"><span class="hint-key">ZQSD</span> Déplacer &nbsp; <span class="hint-key">ESP</span> Tir &nbsp; <span class="hint-key">E</span> Passe &nbsp; <span class="hint-key">A</span> Sprint</div>
+        <div class="hint-row hint-touch">📱 Mobile : Joystick gauche + boutons droite</div>
+      </div>
+      <div class="blink-text">APPUYER POUR JOUER</div>
+      <div class="copyright">© 1996 PIXELSTUDIO</div>
     </div>
-
-    <!-- ═══ ÉCRAN SÉLECTION ÉQUIPE ═══ -->
-    <div id="screen-select" class="screen">
-      <h2 class="select-title" id="select-title-text">CHOISIR TON ÉQUIPE</h2>
-      <div id="team-grid"></div>
-      <div class="vs-display">
-        <div class="vs-side">
-          <div id="team1-badge" class="badge-slot">?</div>
-          <div id="team1-select-name" class="badge-name p1-label">P1</div>
-        </div>
-        <span class="vs-text">VS</span>
-        <div class="vs-side">
-          <div id="team2-badge" class="badge-slot">?</div>
-          <div id="team2-select-name" class="badge-name p2-label">IA</div>
-        </div>
-      </div>
-      <div id="select-hint" class="hint-text">↑↓←→ NAVIGUER  •  ENTRÉE / TAP CONFIRMER</div>
-    </div>
-
-    <!-- ═══ ÉCRAN JEU ═══ -->
-    <div id="screen-game" class="screen">
-      <div id="hud">
-        <div id="score-display">
-          <span id="team1-name-hud" class="p1-label">---</span>
-          <span id="score">0 - 0</span>
-          <span id="team2-name-hud" class="p2-label">---</span>
-        </div>
-        <div id="timer-display">00:00</div>
-        <div id="mode-badge">1P</div>
-      </div>
-      <div id="game-area">
-        <canvas id="gameCanvas"></canvas>
-        <!-- Joystick P1 -->
-        <div id="joystick1-zone" class="joystick-zone touch-left-zone">
-          <div id="joystick1-bg"   class="joystick-bg"></div>
-          <div id="joystick1-knob" class="joystick-knob"></div>
-        </div>
-        <!-- Joystick P2 (2J) -->
-        <div id="joystick2-zone" class="joystick-zone touch-right-zone hidden-p2">
-          <div id="joystick2-bg"   class="joystick-bg"></div>
-          <div id="joystick2-knob" class="joystick-knob"></div>
-        </div>
-        <!-- Boutons P1 -->
-        <div id="btns-p1" class="action-btns btns-p1-pos">
-          <button id="btn-p1-pass"   class="action-btn btn-pass">PASSE</button>
-          <button id="btn-p1-shoot"  class="action-btn btn-shoot">TIR ⚽</button>
-          <button id="btn-p1-sprint" class="action-btn btn-sprint">⚡</button>
-        </div>
-        <!-- Boutons P2 (2J) -->
-        <div id="btns-p2" class="action-btns btns-p2-pos hidden-p2">
-          <button id="btn-p2-pass"   class="action-btn btn-pass">PASSE</button>
-          <button id="btn-p2-shoot"  class="action-btn btn-shoot">TIR ⚽</button>
-          <button id="btn-p2-sprint" class="action-btn btn-sprint">⚡</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- ═══ ÉCRAN FIN MATCH ═══ -->
-    <div id="screen-end" class="screen">
-      <div class="end-container">
-        <div class="end-title">FINAL SCORE</div>
-        <div id="end-score"  class="end-score-display"></div>
-        <div id="end-winner" class="end-winner"></div>
-        <div class="end-options">
-          <div id="btn-rematch" class="menu-btn active-btn">⟳ REJOUER</div>
-          <div id="btn-menu"    class="menu-btn">⌂ MENU</div>
-        </div>
-      </div>
-    </div>
-
   </div>
-  <script src="game.js"></script>
+
+  <!-- ══ SÉLECTION ══ -->
+  <div id="screen-select" class="screen">
+    <div id="select-title-text" class="select-title">CHOISIR ÉQUIPE</div>
+    <div id="team-grid"></div>
+    <div class="vs-display">
+      <div class="vs-side">
+        <div class="p1-label badge-name">P1</div>
+        <div id="team1-badge" class="badge-slot">?</div>
+      </div>
+      <div class="vs-text">VS</div>
+      <div class="vs-side">
+        <div id="team2-select-name" class="p2-label badge-name">IA</div>
+        <div id="team2-badge" class="badge-slot">?</div>
+      </div>
+    </div>
+    <div id="select-hint" class="hint-text"></div>
+  </div>
+
+  <!-- ══ JEU ══ -->
+  <div id="screen-game" class="screen">
+    <div id="hud">
+      <div id="score-display">
+        <span id="team1-name-hud">?</span>
+        <span id="score">0 - 0</span>
+        <span id="team2-name-hud">?</span>
+      </div>
+      <span id="timer-display">00:00</span>
+      <span id="mode-badge">1P</span>
+    </div>
+
+    <div id="game-area">
+      <canvas id="gameCanvas"></canvas>
+
+      <!-- Joystick P1 (mobile uniquement – gauche) -->
+      <div id="joystick1-zone" class="joystick-zone joy-left">
+        <div class="joystick-bg"></div>
+        <div id="joystick1-knob" class="joystick-knob"></div>
+      </div>
+
+      <!-- Joystick P2 (2J mobile – droite, inversé) -->
+      <div id="joystick2-zone" class="joystick-zone joy-right hidden-p2">
+        <div class="joystick-bg"></div>
+        <div id="joystick2-knob" class="joystick-knob"></div>
+      </div>
+
+      <!-- Boutons P1 (mobile: droite ; desktop: bas-centre) -->
+      <div id="btns-p1" class="action-btns btns-p1-pos">
+        <button id="btn-p1-sprint" class="action-btn btn-sprint" title="Sprint [A]">⚡</button>
+        <button id="btn-p1-pass"   class="action-btn btn-pass"   title="Passe [E]">PASSE<br><span class="btn-key">E</span></button>
+        <button id="btn-p1-shoot"  class="action-btn btn-shoot"  title="Tir [Espace]">TIR<br><span class="btn-key">ESP</span></button>
+      </div>
+
+      <!-- Boutons P2 (2J – côté gauche en mode 2J desktop, droite en mobile) -->
+      <div id="btns-p2" class="action-btns btns-p2-pos hidden-p2">
+        <button id="btn-p2-shoot"  class="action-btn btn-shoot"  title="Tir [Entrée]">TIR<br><span class="btn-key">ENT</span></button>
+        <button id="btn-p2-pass"   class="action-btn btn-pass"   title="Passe [Shift]">PASSE<br><span class="btn-key">SHF</span></button>
+        <button id="btn-p2-sprint" class="action-btn btn-sprint" title="Sprint [Ctrl]">⚡</button>
+      </div>
+
+      <!-- Aide clavier (desktop uniquement) -->
+      <div id="kb-hint" class="kb-hint">
+        <span class="kb-row kb-p1">P1 : ZQSD · ESP=Tir · E=Passe · A=Sprint</span>
+        <span id="kb-p2-hint" class="kb-row kb-p2 hidden-p2">P2 : ←→↑↓ · Entrée=Tir · Shift=Passe · Ctrl=Sprint</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ FIN ══ -->
+  <div id="screen-end" class="screen">
+    <div class="end-container">
+      <div class="end-title">FIN DU MATCH</div>
+      <div id="end-score" class="end-score-display">0 - 0</div>
+      <div id="end-winner" class="end-winner"></div>
+      <div class="end-options">
+        <button id="btn-rematch" class="menu-btn active-btn">REJOUER</button>
+        <button id="btn-menu"    class="menu-btn">MENU</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script src="game.js"></script>
 </body>
 </html>
