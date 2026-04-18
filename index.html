@@ -14,7 +14,25 @@
           <span class="title-line1">⚽ PIXEL</span>
           <span class="title-line2">FOOT '96</span>
         </div>
-        <div class="blink-text">APPUIE SUR ENTRÉE</div>
+        <div class="blink-text">APPUIE SUR ENTRÉE POUR JOUER</div>
+
+        <div class="controls-panel">
+          <div class="ctrl-col">
+            <div class="ctrl-player p1-label">▲ JOUEUR 1 (bleu)</div>
+            <div class="ctrl-row"><kbd>Z</kbd><kbd>Q</kbd><kbd>S</kbd><kbd>D</kbd> <span>Déplacer</span></div>
+            <div class="ctrl-row"><kbd>ESPACE</kbd> <span>Tirer / Shooter</span></div>
+            <div class="ctrl-row"><kbd>E</kbd> <span>Passer le ballon</span></div>
+          </div>
+          <div class="ctrl-divider"></div>
+          <div class="ctrl-col">
+            <div class="ctrl-player p2-label">▲ JOUEUR 2 (rouge)</div>
+            <div class="ctrl-row"><kbd>↑</kbd><kbd>←</kbd><kbd>↓</kbd><kbd>→</kbd> <span>Déplacer</span></div>
+            <div class="ctrl-row"><kbd>ENTRÉE</kbd> <span>Tirer / Shooter</span></div>
+            <div class="ctrl-row"><kbd>SHIFT</kbd> <span>Passer le ballon</span></div>
+          </div>
+        </div>
+
+        <div class="tips-bar">💡 Approche-toi du ballon avant de tirer  •  L'IA te fera des passes automatiquement</div>
         <div class="copyright">© 1996 RETRO GAMES  •  ALL RIGHTS RESERVED</div>
       </div>
     </div>
@@ -41,10 +59,23 @@
         </div>
         <div id="timer-display">90:00</div>
       </div>
-      <canvas id="gameCanvas" width="640" height="400"></canvas>
+      <canvas id="gameCanvas" width="640" height="384"></canvas>
       <div id="controls-hint">
-        <span>JOUEUR 1: ZQSD + ESPACE (tir) + E (passe)</span>
-        <span>JOUEUR 2: ←↑↓→ + ENTRÉE (tir) + SHIFT (passe)</span>
+        <div class="ctrl-block p1-block">
+          <span class="ctrl-block-title">P1</span>
+          <span><kbd class="kbd-sm">ZQSD</kbd> Mvt</span>
+          <span><kbd class="kbd-sm">ESPACE</kbd> Tir</span>
+          <span><kbd class="kbd-sm">E</kbd> Passe</span>
+        </div>
+        <div class="ctrl-sep">|</div>
+        <div class="ctrl-block p2-block">
+          <span class="ctrl-block-title">P2</span>
+          <span><kbd class="kbd-sm">↑↓←→</kbd> Mvt</span>
+          <span><kbd class="kbd-sm">ENTRÉE</kbd> Tir</span>
+          <span><kbd class="kbd-sm">SHIFT</kbd> Passe</span>
+        </div>
+        <div class="ctrl-sep">|</div>
+        <div class="ctrl-tip">⚽ Approche-toi du ballon pour tirer !</div>
       </div>
     </div>
 

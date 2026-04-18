@@ -117,6 +117,127 @@ body {
   letter-spacing: 1px;
 }
 
+/* ====== PANNEAU CONTRÔLES ÉCRAN TITRE ====== */
+.controls-panel {
+  display: flex;
+  gap: 0;
+  background: rgba(255,255,255,0.04);
+  border: 2px solid #333;
+  padding: 14px 20px;
+  max-width: 540px;
+  width: 100%;
+}
+
+.ctrl-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.ctrl-divider {
+  width: 2px;
+  background: #333;
+  margin: 0 18px;
+  flex-shrink: 0;
+}
+
+.ctrl-player {
+  font-size: 8px;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.p1-label { color: #4af; }
+.p2-label { color: #f55; }
+
+.ctrl-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 8px;
+  color: #bbb;
+}
+
+.ctrl-row span {
+  color: #888;
+  font-size: 7px;
+}
+
+kbd {
+  background: #222;
+  border: 1px solid #555;
+  border-bottom: 3px solid #444;
+  color: #fff;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  padding: 3px 5px;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+.tips-bar {
+  font-size: 7px;
+  color: #f9e000;
+  background: rgba(249,224,0,0.06);
+  border: 1px solid rgba(249,224,0,0.2);
+  padding: 6px 12px;
+  text-align: center;
+  max-width: 540px;
+  width: 100%;
+  letter-spacing: 1px;
+}
+
+/* ====== CONTRÔLES EN JEU (barre bas) ====== */
+#controls-hint {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 10px;
+}
+
+.ctrl-block {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 6px;
+}
+
+.ctrl-block-title {
+  font-size: 8px;
+  font-weight: bold;
+  padding-right: 4px;
+}
+
+.p1-block .ctrl-block-title { color: #4af; }
+.p2-block .ctrl-block-title { color: #f55; }
+
+.ctrl-block span {
+  color: #777;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+kbd.kbd-sm {
+  font-size: 5px;
+  padding: 2px 4px;
+  border-bottom-width: 2px;
+}
+
+.ctrl-sep {
+  color: #333;
+  font-size: 18px;
+  font-weight: 100;
+}
+
+.ctrl-tip {
+  font-size: 6px;
+  color: #f9e000;
+  letter-spacing: 0.5px;
+}
+
 /* ====== SÉLECTION ÉQUIPE ====== */
 #screen-select {
   background: #000912;
@@ -263,12 +384,9 @@ body {
 
 #controls-hint {
   width: 640px;
-  height: 28px;
+  height: 44px;
   background: #0a0a0a;
   border-top: 2px solid #333;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
   font-size: 6px;
   color: #555;
   flex-shrink: 0;
