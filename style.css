@@ -276,7 +276,8 @@ html, body {
    CLAVIER — cache joysticks si souris détectée
 ══════════════════════════════════════════════ */
 @media (hover: hover) and (pointer: fine) {
-  /* Desktop : joysticks plus discrets */
-  .joystick-zone { opacity: 0.25; pointer-events: none; }
-  .action-btns   { opacity: 0.3;  pointer-events: none; }
+  /* Desktop : joysticks désactivés (clavier utilisé à la place) */
+  .joystick-zone { opacity: 0.15; pointer-events: none; }
+  /* Boutons restent cliquables à la souris */
+  .action-btns   { opacity: 0.85; }
 }
